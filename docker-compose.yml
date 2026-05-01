@@ -1,0 +1,25 @@
+services:
+  db:
+    build: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123
+      MYSQL_DATABASE: school
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "9000:80"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

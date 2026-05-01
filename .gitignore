@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Environment variables (NEVER push these)
+.env
+
+# Docker specifics
+database/data/ (if your DB persists data locally)
